@@ -14,13 +14,10 @@ public class GameManager {
     }
 
     public void run() {
-        Result result;
         do {
-            String input = InputView.readNumbers();
-            Balls playerBalls = Balls.create(input);
-            result = baseBallGame.play(playerBalls);
-            OutputView.printResult(result);
-        } while (!result.isOver() || InputView.retryOrNot());
+            Balls playerBalls = Balls.create(InputView.readNumbers());
+            OutputView.printResult(baseBallGame.play(playerBalls));
+        } while (!baseBallGame.isOver() || InputView.retryOrNot());
 
     }
 }
