@@ -5,8 +5,6 @@ import baseball.enums.RetryOrQuit;
 
 public class ValidationUtil {
 
-
-
     private ValidationUtil() {
     }
 

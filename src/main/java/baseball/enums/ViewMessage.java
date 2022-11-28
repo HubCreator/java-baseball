@@ -7,7 +7,7 @@ public enum ViewMessage {
     N_BALL("{0}볼"),
     N_STRIKE("{0}스트라이크"),
     END_MESSAGE(String.format("%d개의 숫자를 모두 맞히셨습니다! 게임 종료", Const.SIZE.getValue())),
-    RETRY_OR_QUIT_MESSAGE(String.format("게임을 새로 시작하려면 %s, 종료하려면 %s를 입력하세요.\n", RetryOrQuit.RETRY.getValue(), RetryOrQuit.QUIT.getValue()));
+    RETRY_OR_QUIT_MESSAGE(String.format("게임을 새로 시작하려면 %s, 종료하려면 %s를 입력하세요.", RetryOrQuit.RETRY.getValue(), RetryOrQuit.QUIT.getValue()));
 
     private final String value;
 
