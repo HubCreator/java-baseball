@@ -15,17 +15,17 @@ class ValidationUtilTest {
     class ValidRange {
 
         @DisplayName("범위 내의 입력")
-        @ValueSource(strings = {"1", "3", "9"})
+        @ValueSource(strings = {"123", "345", "789"})
         @ParameterizedTest
         void case1(String input) {
-            ValidationUtil.isValidRange(input);
+            ValidationUtil.isValid(input);
         }
 
         @DisplayName("범위를 초과한 입력")
         @ValueSource(strings = {"-1", "0", "10", "999999999999999999999999999999", "!", "*"})
         @ParameterizedTest
         void case2(String input) {
-            assertThatThrownBy(() -> ValidationUtil.isValidRange(input))
+            assertThatThrownBy(() -> ValidationUtil.isValid(input))
                     .isInstanceOf(IllegalArgumentException.class);
         }
     }
@@ -38,14 +38,14 @@ class ValidationUtilTest {
         @ValueSource(strings = {"123", "358", "789"})
         @ParameterizedTest
         void case1(String input) {
-            ValidationUtil.isValidSize(input);
+            ValidationUtil.isValid(input);
         }
 
         @DisplayName("세 개의 숫자가 아님")
         @ValueSource(strings = {"1234", "35", "78910", "1"})
         @ParameterizedTest
         void case2(String input) {
-            assertThatThrownBy(() -> ValidationUtil.isValidSize(input))
+            assertThatThrownBy(() -> ValidationUtil.isValid(input))
                     .isInstanceOf(IllegalArgumentException.class);
         }
 
@@ -53,14 +53,14 @@ class ValidationUtilTest {
         @ValueSource(strings = {"123", "235", "789"})
         @ParameterizedTest
         void case3(String input) {
-            ValidationUtil.isDistinct(input);
+            ValidationUtil.isValid(input);
         }
 
         @DisplayName("세 개의 숫자 중 중복이 있음")
         @ValueSource(strings = {"122", "233", "799"})
         @ParameterizedTest
         void case4(String input) {
-            assertThatThrownBy(() -> ValidationUtil.isDistinct(input))
+            assertThatThrownBy(() -> ValidationUtil.isValid(input))
                     .isInstanceOf(IllegalArgumentException.class);
         }
     }

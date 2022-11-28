@@ -3,24 +3,36 @@ package baseball.util;
 import baseball.enums.Const;
 import baseball.enums.RetryOrQuit;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.IntStream;
+
 public class ValidationUtil {
 
     private ValidationUtil() {
     }
 
+    public static void isValid(String input) {
+        isValidSize(input);
+        isDistinct(input);
+        isValidRange(input);
+    }
+
     public static void isValidRange(String input) {
-        int digit = isDigit(input);
-        if (digit < Const.MIN.getValue() || digit > Const.MAX.getValue()) {
-            throw new IllegalArgumentException();
+        List<Integer> list = mapNumber(input);
+        for (Integer digit : list) {
+            if (digit < Const.MIN.getValue() || digit > Const.MAX.getValue()) {
+                throw new IllegalArgumentException();
+            }
         }
     }
 
-    private static int isDigit(String input) {
-        try {
-            return Integer.parseInt(input);
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(e);
-        }
+    private static List<Integer> mapNumber(String input) {
+        List<Integer> result = new ArrayList<>();
+        IntStream
+                .range(0, input.length())
+                .forEach(index -> result.add(input.charAt(index) - '0'));
+        return result;
     }
 
     public static void isValidSize(String input) {
