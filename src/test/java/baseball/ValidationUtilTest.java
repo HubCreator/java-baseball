@@ -2,11 +2,9 @@ package baseball;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ValidationUtilTest {
@@ -23,7 +21,7 @@ class ValidationUtilTest {
         }
 
         @DisplayName("범위를 초과한 입력")
-        @ValueSource(strings = {"0", "10", "999999999999999999999999999999", "!", "*"})
+        @ValueSource(strings = {"-1", "0", "10", "999999999999999999999999999999", "!", "*"})
         @ParameterizedTest
         void case2(String input) {
             assertThatThrownBy(() -> ValidationUtil.isValidRange(input))

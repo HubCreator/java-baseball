@@ -6,6 +6,9 @@ public class ValidationUtil {
     public static final int MAX = 9;
     public static final int SIZE = 3;
 
+    private ValidationUtil() {
+    }
+
     public static void isValidRange(String input) {
         int digit = isDigit(input);
         if (digit < MIN || digit > MAX) {
