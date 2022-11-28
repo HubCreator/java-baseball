@@ -4,7 +4,6 @@ import baseball.enums.BallStatus;
 import baseball.enums.ConstVariable;
 import baseball.enums.ViewMessage;
 
-import javax.swing.text.View;
 import java.text.MessageFormat;
 import java.util.List;
 
@@ -41,13 +40,13 @@ public class Result {
             return MessageFormat.format(ViewMessage.N_STRIKE.getValue(), strikeCount) +
                     ViewMessage.END_MESSAGE.getValue();
         }
-        if (ConstVariable.isMoreThanOne(strikeCount) && ConstVariable.isMoreThanOne(ballCount)) {
+        if (ConstVariable.isGreaterThanZero(strikeCount) && ConstVariable.isGreaterThanZero(ballCount)) {
             return MessageFormat.format(ViewMessage.N_BALL_N_STRIKE.getValue(), ballCount, strikeCount);
         }
-        if (ConstVariable.isMoreThanOne(strikeCount)) {
+        if (ConstVariable.isGreaterThanZero(strikeCount)) {
             return MessageFormat.format(ViewMessage.N_STRIKE.getValue(), strikeCount);
         }
-        if (ConstVariable.isMoreThanOne(ballCount)) {
+        if (ConstVariable.isGreaterThanZero(ballCount)) {
             return MessageFormat.format(ViewMessage.N_BALL.getValue(), ballCount);
         }
         return ViewMessage.NOTHING.getValue();
