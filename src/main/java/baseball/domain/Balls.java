@@ -4,7 +4,6 @@ import baseball.enums.BallStatus;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class Balls {
@@ -45,18 +44,5 @@ public class Balls {
         return balls.answer.stream()
                 .map(ball -> play(ball))
                 .collect(Collectors.toList());
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Balls ball = (Balls) o;
-        return Objects.equals(answer, ball.answer);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(answer);
     }
 }

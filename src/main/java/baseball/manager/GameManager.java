@@ -40,5 +40,4 @@ public class GameManager {
                 ConstVariable.MIN.getValue(),
                 ConstVariable.MAX.getValue());
     }
-
 }

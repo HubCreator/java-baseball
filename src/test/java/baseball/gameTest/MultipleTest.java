@@ -34,6 +34,7 @@ class MultipleTest {
         @DisplayName("낫싱")
         @Test
         void case1() {
+
             assertThat(computer.play(new Ball(1, 5))).isEqualTo(BallStatus.NOTHING);
             assertThat(computer.play(new Ball(2, 6))).isEqualTo(BallStatus.NOTHING);
         }
