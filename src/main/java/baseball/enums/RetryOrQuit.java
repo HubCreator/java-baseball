@@ -10,7 +10,7 @@ public enum RetryOrQuit {
     }
 
     public boolean isMatch(String input) {
-        return this.value.equals(input);
+        return value.equals(input);
     }
 
     public String getValue() {

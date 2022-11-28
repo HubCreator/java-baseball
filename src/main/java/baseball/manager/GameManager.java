@@ -1,5 +1,8 @@
-package baseball.domain;
+package baseball.manager;
 
+import baseball.domain.Balls;
+import baseball.domain.BaseBallGame;
+import baseball.domain.Result;
 import baseball.enums.ConstVariable;
 import baseball.util.GenerateRandomNumbersUtil;
 import baseball.view.InputView;

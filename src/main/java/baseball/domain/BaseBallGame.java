@@ -8,7 +8,7 @@ public class BaseBallGame {
         this.answer = balls;
     }
 
-    Result play(Balls userBalls) {
+    public Result play(Balls userBalls) {
         return result = new Result(answer.play(userBalls));
     }
 
