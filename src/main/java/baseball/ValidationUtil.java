@@ -29,9 +29,15 @@ public class ValidationUtil {
 
     public static void isDistinct(String input) {
         long count = input.chars()
-                    .distinct()
-                    .count();
+                .distinct()
+                .count();
         if (count != SIZE) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    public static void isRetryOrQuit(String input) {
+        if (!RetryOrQuit.QUIT.isQuit(input) && !RetryOrQuit.RETRY.isRetry(input)) {
             throw new IllegalArgumentException();
         }
     }
