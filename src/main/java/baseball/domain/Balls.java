@@ -7,6 +7,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Balls {
+    public static final int START_INDEX = 0;
+
     private final List<Ball> answer;
 
     public Balls(List<Ball> balls) {
@@ -15,7 +17,7 @@ public class Balls {
 
     public static Balls create(String string) {
         List<Ball> result = new ArrayList<>();
-        int index = 0;
+        int index = START_INDEX;
         while (index < string.length()) {
             result.add(new Ball(index, string.charAt(index) - '0'));
             index++;
@@ -25,7 +27,7 @@ public class Balls {
 
     public static Balls create(List<Integer> list) {
         List<Ball> result = new ArrayList<>();
-        int index = 0;
+        int index = START_INDEX;
         for (Integer number : list) {
             result.add(new Ball(index++, number));
         }

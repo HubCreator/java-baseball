@@ -8,7 +8,6 @@ import java.util.List;
 public class GenerateRandomNumbersUtil {
 
     private GenerateRandomNumbersUtil() {
-
     }
 
     public static List<Integer> generateRandomBalls(int count, int minValue, int maxValue) {
