@@ -1,4 +1,4 @@
-package baseball;
+package baseball.enums;
 
 public enum RetryOrQuit {
     RETRY("1"), QUIT("2");

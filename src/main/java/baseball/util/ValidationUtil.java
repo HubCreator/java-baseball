@@ -1,17 +1,18 @@
-package baseball;
+package baseball.util;
+
+import baseball.enums.Const;
+import baseball.enums.RetryOrQuit;
 
 public class ValidationUtil {
 
-    public static final int MIN = 1;
-    public static final int MAX = 9;
-    public static final int SIZE = 3;
+
 
     private ValidationUtil() {
     }
 
     public static void isValidRange(String input) {
         int digit = isDigit(input);
-        if (digit < MIN || digit > MAX) {
+        if (digit < Const.MIN.getValue() || digit > Const.MAX.getValue()) {
             throw new IllegalArgumentException();
         }
     }
@@ -25,7 +26,7 @@ public class ValidationUtil {
     }
 
     public static void isValidSize(String input) {
-        if (input.length() != SIZE) {
+        if (input.length() != Const.SIZE.getValue()) {
             throw new IllegalArgumentException();
         }
     }
@@ -34,7 +35,7 @@ public class ValidationUtil {
         long count = input.chars()
                 .distinct()
                 .count();
-        if (count != SIZE) {
+        if (count != Const.SIZE.getValue()) {
             throw new IllegalArgumentException();
         }
     }
