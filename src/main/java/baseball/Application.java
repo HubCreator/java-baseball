@@ -12,7 +12,7 @@ public class Application {
             GameManager gameManager = new GameManager(balls);
             gameManager.run();
         } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
+            System.out.println("잘못된 값을 입력하셨습니다. 게임을 종료합니다.");
         }
     }
 }

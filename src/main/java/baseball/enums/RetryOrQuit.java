@@ -9,15 +9,11 @@ public enum RetryOrQuit {
         this.value = value;
     }
 
+    public boolean isMatch(String input) {
+        return this.value.equals(input);
+    }
+
     public String getValue() {
         return value;
-    }
-
-    public boolean isRetry(String input) {
-        return this.value.equals(input);
-    }
-
-    public boolean isQuit(String input) {
-        return this.value.equals(input);
     }
 }

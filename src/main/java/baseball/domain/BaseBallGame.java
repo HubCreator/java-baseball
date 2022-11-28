@@ -8,8 +8,7 @@ public class BaseBallGame {
         this.answer = balls;
     }
 
-    boolean play(Balls userBalls) {
-        Result result = new Result(answer.play(userBalls));
-        return result.isOver();
+    Result play(Balls userBalls) {
+        return new Result(answer.play(userBalls));
     }
 }

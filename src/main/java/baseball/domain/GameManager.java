@@ -1,7 +1,7 @@
 package baseball.domain;
 
 import baseball.view.InputView;
-import camp.nextstep.edu.missionutils.Console;
+import baseball.view.OutputView;
 
 import java.util.List;
 
@@ -14,11 +14,13 @@ public class GameManager {
     }
 
     public void run() {
-        boolean flag;
+        Result result;
         do {
-            Balls playerBalls = Balls.create(InputView.readNumbers(Console.readLine()));
-            flag = baseBallGame.play(playerBalls);
-        } while (flag);
+            String input = InputView.readNumbers();
+            Balls playerBalls = Balls.create(input);
+            result = baseBallGame.play(playerBalls);
+            OutputView.printResult(result);
+        } while (!result.isOver() || InputView.retryOrNot());
 
     }
 }

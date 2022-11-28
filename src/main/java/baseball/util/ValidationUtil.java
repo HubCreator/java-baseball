@@ -51,7 +51,7 @@ public class ValidationUtil {
     }
 
     public static void isRetryOrQuit(String input) {
-        if (!RetryOrQuit.QUIT.isQuit(input) && !RetryOrQuit.RETRY.isRetry(input)) {
+        if (!RetryOrQuit.QUIT.isMatch(input) && !RetryOrQuit.RETRY.isMatch(input)) {
             throw new IllegalArgumentException();
         }
     }
