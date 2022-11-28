@@ -1,7 +1,7 @@
 package baseball.enums;
 
 public enum ConstVariable {
-    ZERO(0), MIN(1), MAX(9), SIZE(3);
+    MORE_THAN_ONE(0), MIN(1), MAX(9), SIZE(3);
 
     private final int value;
 
@@ -15,5 +15,9 @@ public enum ConstVariable {
 
     public boolean isMatch(int input) {
         return value == input;
+    }
+
+    public static boolean isMoreThanOne(int input) {
+        return MORE_THAN_ONE.value < input;
     }
 }

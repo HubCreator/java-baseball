@@ -7,16 +7,16 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class InputView {
 
+    public static void printStartMessage() {
+        printMessageNewLine(ViewMessage.START_MESSAGE);
+    }
+
     public static String readNumbers() {
         printMessage(ViewMessage.INPUT_MESSAGE);
         String input = Console.readLine();
         ValidationUtil.isValid(input);
 
         return input;
-    }
-
-    public static void printStartMessage() {
-        printMessageNewLine(ViewMessage.START_MESSAGE);
     }
 
     public static boolean retryOrNot() {

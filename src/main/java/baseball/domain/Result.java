@@ -4,6 +4,7 @@ import baseball.enums.BallStatus;
 import baseball.enums.ConstVariable;
 import baseball.enums.ViewMessage;
 
+import javax.swing.text.View;
 import java.text.MessageFormat;
 import java.util.List;
 
@@ -37,15 +38,16 @@ public class Result {
     @Override
     public String toString() {
         if (ConstVariable.SIZE.isMatch(strikeCount)) {
-            return ViewMessage.END_MESSAGE.getValue();
+            return MessageFormat.format(ViewMessage.N_STRIKE.getValue(), strikeCount) +
+                    ViewMessage.END_MESSAGE.getValue();
         }
-        if (ConstVariable.ZERO.isMatch(strikeCount) && ConstVariable.ZERO.isMatch(ballCount)) {
+        if (ConstVariable.isMoreThanOne(strikeCount) && ConstVariable.isMoreThanOne(ballCount)) {
             return MessageFormat.format(ViewMessage.N_BALL_N_STRIKE.getValue(), ballCount, strikeCount);
         }
-        if (ConstVariable.ZERO.isMatch(strikeCount)) {
+        if (ConstVariable.isMoreThanOne(strikeCount)) {
             return MessageFormat.format(ViewMessage.N_STRIKE.getValue(), strikeCount);
         }
-        if (ConstVariable.ZERO.isMatch(ballCount)) {
+        if (ConstVariable.isMoreThanOne(ballCount)) {
             return MessageFormat.format(ViewMessage.N_BALL.getValue(), ballCount);
         }
         return ViewMessage.NOTHING.getValue();
