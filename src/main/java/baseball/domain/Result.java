@@ -19,33 +19,33 @@ public class Result {
     }
 
     private void isStrike(BallStatus ballStatus) {
-        if (ballStatus == BallStatus.STRIKE) {
+        if (BallStatus.STRIKE.isMatch(ballStatus)) {
             strikeCount++;
         }
     }
 
     private void isBall(BallStatus ballStatus) {
-        if (ballStatus == BallStatus.BALL) {
+        if (BallStatus.BALL.isMatch(ballStatus)) {
             ballCount++;
         }
     }
 
     public boolean isOver() {
-        return strikeCount == ConstVariable.SIZE.getValue();
+        return ConstVariable.SIZE.isMatch(strikeCount);
     }
 
     @Override
     public String toString() {
-        if (strikeCount == ConstVariable.SIZE.getValue()) {
+        if (ConstVariable.SIZE.isMatch(strikeCount)) {
             return ViewMessage.END_MESSAGE.getValue();
         }
-        if (strikeCount > 0 && ballCount > 0) {
+        if (ConstVariable.ZERO.isMatch(strikeCount) && ConstVariable.ZERO.isMatch(ballCount)) {
             return MessageFormat.format(ViewMessage.N_BALL_N_STRIKE.getValue(), ballCount, strikeCount);
         }
-        if (strikeCount > 0) {
+        if (ConstVariable.ZERO.isMatch(strikeCount)) {
             return MessageFormat.format(ViewMessage.N_STRIKE.getValue(), strikeCount);
         }
-        if (ballCount > 0) {
+        if (ConstVariable.ZERO.isMatch(ballCount)) {
             return MessageFormat.format(ViewMessage.N_BALL.getValue(), ballCount);
         }
         return ViewMessage.NOTHING.getValue();

@@ -1,7 +1,7 @@
 package baseball.enums;
 
 public enum ConstVariable {
-    MIN(1), MAX(9), SIZE(3);
+    ZERO(0), MIN(1), MAX(9), SIZE(3);
 
     private final int value;
 
@@ -11,5 +11,9 @@ public enum ConstVariable {
 
     public int getValue() {
         return value;
+    }
+
+    public boolean isMatch(int input) {
+        return value == input;
     }
 }

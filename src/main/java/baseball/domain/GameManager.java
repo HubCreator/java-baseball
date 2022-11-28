@@ -1,23 +1,41 @@
 package baseball.domain;
 
+import baseball.enums.ConstVariable;
+import baseball.util.GenerateRandomNumbersUtil;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
 import java.util.List;
 
 public class GameManager {
-    private final BaseBallGame baseBallGame;
+    private BaseBallGame baseBallGame;
 
-    public GameManager(List<Integer> balls) {
+    public GameManager() {
         InputView.printStartMessage();
-        baseBallGame = new BaseBallGame(Balls.create(balls));
     }
 
     public void run() {
         do {
-            Balls playerBalls = Balls.create(InputView.readNumbers());
-            OutputView.printResult(baseBallGame.play(playerBalls));
-        } while (!baseBallGame.isOver() || InputView.retryOrNot());
-
+            List<Integer> balls = getRandomBalls();
+            baseBallGame = new BaseBallGame(Balls.create(balls));
+        } while (canPlay());
     }
+
+    private boolean canPlay() {
+        do {
+            Balls playerBalls = Balls.create(InputView.readNumbers());
+            Result result = baseBallGame.play(playerBalls);
+            OutputView.printResult(result);
+        } while (!baseBallGame.isOver());
+
+        return InputView.retryOrNot();
+    }
+
+    private List<Integer> getRandomBalls() {
+        return GenerateRandomNumbersUtil.generateRandomBalls(
+                ConstVariable.SIZE.getValue(),
+                ConstVariable.MIN.getValue(),
+                ConstVariable.MAX.getValue());
+    }
+
 }
