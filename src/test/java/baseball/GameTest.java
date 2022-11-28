@@ -182,5 +182,35 @@ public class GameTest {
             }
         }
 
+        @DisplayName("N볼 N스트라이크")
+        @Nested
+        class BallAndStrike {
+
+            @DisplayName("1볼 1스트라이크")
+            @Test
+            void case1() {
+                List<Ball> balls = Arrays.asList(
+                        new Ball(1, 1),
+                        new Ball(2, 3),
+                        new Ball(3, 5));
+                Balls userBalls = new Balls(balls);
+                List<BallStatus> result = computer.play(userBalls);
+                assertThat(result.stream().filter(m -> m == BallStatus.BALL).count()).isEqualTo(1);
+                assertThat(result.stream().filter(m -> m == BallStatus.STRIKE).count()).isEqualTo(1);
+            }
+
+            @DisplayName("2볼 1스트라이크")
+            @Test
+            void case2() {
+                List<Ball> balls = Arrays.asList(
+                        new Ball(1, 1),
+                        new Ball(2, 3),
+                        new Ball(3, 2));
+                Balls userBalls = new Balls(balls);
+                List<BallStatus> result = computer.play(userBalls);
+                assertThat(result.stream().filter(m -> m == BallStatus.BALL).count()).isEqualTo(2);
+                assertThat(result.stream().filter(m -> m == BallStatus.STRIKE).count()).isEqualTo(1);
+            }
+        }
     }
 }
