@@ -1,7 +1,7 @@
 package baseball.domain;
 
 import baseball.enums.BallStatus;
-import baseball.enums.Const;
+import baseball.enums.ConstVariable;
 
 import java.util.List;
 
@@ -16,6 +16,6 @@ public class Result {
     public boolean isOver() {
         return result
                 .stream()
-                .filter(m -> m == BallStatus.STRIKE).count() == Const.SIZE.getValue();
+                .filter(m -> m == BallStatus.STRIKE).count() == ConstVariable.SIZE.getValue();
     }
 }

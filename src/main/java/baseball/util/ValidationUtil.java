@@ -1,6 +1,6 @@
 package baseball.util;
 
-import baseball.enums.Const;
+import baseball.enums.ConstVariable;
 import baseball.enums.RetryOrQuit;
 
 import java.util.ArrayList;
@@ -21,7 +21,7 @@ public class ValidationUtil {
     public static void isValidRange(String input) {
         List<Integer> list = mapNumber(input);
         for (Integer digit : list) {
-            if (digit < Const.MIN.getValue() || digit > Const.MAX.getValue()) {
+            if (digit < ConstVariable.MIN.getValue() || digit > ConstVariable.MAX.getValue()) {
                 throw new IllegalArgumentException();
             }
         }
@@ -36,7 +36,7 @@ public class ValidationUtil {
     }
 
     public static void isValidSize(String input) {
-        if (input.length() != Const.SIZE.getValue()) {
+        if (input.length() != ConstVariable.SIZE.getValue()) {
             throw new IllegalArgumentException();
         }
     }
@@ -45,7 +45,7 @@ public class ValidationUtil {
         long count = input.chars()
                 .distinct()
                 .count();
-        if (count != Const.SIZE.getValue()) {
+        if (count != ConstVariable.SIZE.getValue()) {
             throw new IllegalArgumentException();
         }
     }

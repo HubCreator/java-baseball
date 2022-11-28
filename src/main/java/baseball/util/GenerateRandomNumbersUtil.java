@@ -1,6 +1,6 @@
 package baseball.util;
 
-import baseball.enums.Const;
+import baseball.enums.ConstVariable;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
@@ -14,8 +14,8 @@ public class GenerateRandomNumbersUtil {
 
     public static List<Integer> generateRandomBalls() {
         List<Integer> computer = new ArrayList<>();
-        while (computer.size() < Const.SIZE.getValue()) {
-            int randomNumber = Randoms.pickNumberInRange(Const.MIN.getValue(), Const.MAX.getValue());
+        while (computer.size() < ConstVariable.SIZE.getValue()) {
+            int randomNumber = Randoms.pickNumberInRange(ConstVariable.MIN.getValue(), ConstVariable.MAX.getValue());
             if (!computer.contains(randomNumber)) {
                 computer.add(randomNumber);
             }
