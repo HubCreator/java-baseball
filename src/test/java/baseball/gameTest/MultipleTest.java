@@ -65,7 +65,8 @@ class MultipleTest {
                     new Ball(2, 5),
                     new Ball(3, 6));
             Balls userBalls = new Balls(balls);
-            assertThat(computer.play(userBalls)).isEqualTo(BallStatus.NOTHING);
+            List<BallStatus> result = computer.play(userBalls);
+            assertThat(result.stream().filter(m -> m == BallStatus.NOTHING).count()).isEqualTo(3);
         }
 
         @DisplayName("N볼")
