@@ -14,7 +14,7 @@ public class GameManager {
     }
 
     public void run() {
-        while (true) {
+        while (!baseBallGame.isOver()) {
             Balls playerBalls = mapBalls(InputView.readNumbers(Console.readLine()));
             baseBallGame.play(playerBalls);
         }
