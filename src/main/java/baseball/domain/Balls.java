@@ -2,6 +2,7 @@ package baseball.domain;
 
 import baseball.enums.BallStatus;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -11,6 +12,25 @@ public class Balls {
 
     public Balls(List<Ball> balls) {
         this.answer = balls;
+    }
+
+    public static Balls create(String string) {
+        List<Ball> result = new ArrayList<>();
+        int index = 0;
+        while (index < string.length()) {
+            result.add(new Ball(index, string.charAt(index) - '0'));
+            index++;
+        }
+        return new Balls(result);
+    }
+
+    public static Balls create(List<Integer> list) {
+        List<Ball> result = new ArrayList<>();
+        int index = 0;
+        for (Integer number : list) {
+            result.add(new Ball(index++, number));
+        }
+        return new Balls(result);
     }
 
     public BallStatus play(Ball ball) {
