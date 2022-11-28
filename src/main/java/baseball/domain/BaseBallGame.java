@@ -1,6 +1,5 @@
 package baseball.domain;
 
-
 public class BaseBallGame {
     private final Balls answer;
 
