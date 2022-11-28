@@ -9,9 +9,9 @@ public class InputView {
 
     public static String readNumbers() {
         printMessage(ViewMessage.INPUT_MESSAGE);
-        String input = Console.readLine();
-        ValidationUtil.isValid(input);
-        return input;
+        ValidationUtil.isValid(Console.readLine());
+
+        return Console.readLine();
     }
 
     public static void printStartMessage() {
@@ -20,10 +20,9 @@ public class InputView {
 
     public static boolean retryOrNot() {
         printMessageNewLine(ViewMessage.RETRY_OR_QUIT_MESSAGE);
-        String input = Console.readLine();
-        ValidationUtil.isRetryOrQuit(input);
+        ValidationUtil.isRetryOrQuit(Console.readLine());
 
-        return RetryOrQuit.RETRY.isMatch(input);
+        return RetryOrQuit.RETRY.isMatch(Console.readLine());
     }
 
     private static void printMessage(ViewMessage message) {
