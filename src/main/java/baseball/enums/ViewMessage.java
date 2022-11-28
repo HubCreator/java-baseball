@@ -2,7 +2,7 @@ package baseball.enums;
 
 public enum ViewMessage {
     START_MESSAGE("숫자 야구 게임을 시작합니다."),
-    INPUT_MESSAGE("숫자를 입력해주세요 : {0}"),
+    INPUT_MESSAGE("숫자를 입력해주세요 : "),
     N_BALL_N_STRIKE("{0}볼 {1}스트라이크"),
     N_BALL("{0}볼"),
     N_STRIKE("{0}스트라이크"),

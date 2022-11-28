@@ -3,39 +3,22 @@ package baseball.domain;
 import baseball.view.InputView;
 import camp.nextstep.edu.missionutils.Console;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class GameManager {
-    private BaseBallGame baseBallGame;
+    private final BaseBallGame baseBallGame;
 
     public GameManager(List<Integer> balls) {
-        baseBallGame = new BaseBallGame(mapBalls(balls));
+        InputView.printStartMessage();
+        baseBallGame = new BaseBallGame(Balls.create(balls));
     }
 
     public void run() {
-        while (!baseBallGame.isOver()) {
-            Balls playerBalls = mapBalls(InputView.readNumbers(Console.readLine()));
-            baseBallGame.play(playerBalls);
-        }
-    }
+        boolean flag;
+        do {
+            Balls playerBalls = Balls.create(InputView.readNumbers(Console.readLine()));
+            flag = baseBallGame.play(playerBalls);
+        } while (flag);
 
-    private Balls mapBalls(List<Integer> balls) {
-        List<Ball> result = new ArrayList<>();
-        int index = 0;
-        for (Integer ball : balls) {
-            result.add(new Ball(index++, ball));
-        }
-        return new Balls(result);
-    }
-
-    private Balls mapBalls(String string) {
-        List<Ball> result = new ArrayList<>();
-        int index = 0;
-        while (index < string.length()) {
-            result.add(new Ball(index, string.charAt(index) - '0'));
-            index++;
-        }
-        return new Balls(result);
     }
 }
