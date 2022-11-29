@@ -3,10 +3,10 @@ package baseball.domain;
 import baseball.enums.BallStatus;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
-import java.util.stream.Collectors;
 
-public class Balls {
+public class Balls implements Iterable<Ball>{
     public static final int START_INDEX = 0;
 
     private final List<Ball> answer;
@@ -31,17 +31,17 @@ public class Balls {
         return new Balls(result);
     }
 
-    public BallStatus play(Ball ball) {
-        return answer.stream()
-                .map(m -> m.play(ball))
-                .filter(m -> m == BallStatus.BALL || m == BallStatus.STRIKE)
-                .findFirst()
-                .orElse(BallStatus.NOTHING);
-    }
 
     public List<BallStatus> play(Balls balls) {
-        return balls.answer.stream()
-                .map(ball -> play(ball))
-                .collect(Collectors.toList());
+        return BallStatus.play(answer, balls);
+    }
+
+    public BallStatus play(Ball ball) {
+        return BallStatus.play(answer, ball);
+    }
+
+    @Override
+    public Iterator<Ball> iterator() {
+        return answer.iterator();
     }
 }
