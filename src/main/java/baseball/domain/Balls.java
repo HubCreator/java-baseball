@@ -15,21 +15,18 @@ public class Balls {
         this.answer = balls;
     }
 
-    public static Balls create(String string) {
+    public static Balls create(String input) {
         List<Ball> result = new ArrayList<>();
-        int index = START_INDEX;
-        while (index < string.length()) {
-            result.add(new Ball(index, string.charAt(index) - '0'));
-            index++;
+        for (int index = START_INDEX; index < input.length(); index++) {
+            result.add(new Ball(index, input.charAt(index) - '0'));
         }
         return new Balls(result);
     }
 
-    public static Balls create(List<Integer> list) {
+    public static Balls create(List<Integer> input) {
         List<Ball> result = new ArrayList<>();
-        int index = START_INDEX;
-        for (Integer number : list) {
-            result.add(new Ball(index++, number));
+        for (int index = START_INDEX; index < input.size(); index++) {
+            result.add(new Ball(index, input.get(index)));
         }
         return new Balls(result);
     }
