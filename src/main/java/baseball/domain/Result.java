@@ -37,18 +37,25 @@ public class Result {
     @Override
     public String toString() {
         if (ConstVariable.SIZE.isMatch(strikeCount)) {
-            return MessageFormat.format(ViewMessage.N_STRIKE.getValue(), strikeCount) +
-                    ViewMessage.END_MESSAGE.getValue();
+            return MessageFormat.format(ViewMessage.N_STRIKE.getValue(), strikeCount) + ViewMessage.END_MESSAGE.getValue();
         }
+        String result = getBallAndStrike();
+        if (result != null) {
+            return result;
+        }
+        return ViewMessage.NOTHING.getValue();
+    }
+
+    private String getBallAndStrike() {
         if (ConstVariable.isGreaterThanZero(strikeCount) && ConstVariable.isGreaterThanZero(ballCount)) {
             return MessageFormat.format(ViewMessage.N_BALL_N_STRIKE.getValue(), ballCount, strikeCount);
-        }
-        if (ConstVariable.isGreaterThanZero(strikeCount)) {
-            return MessageFormat.format(ViewMessage.N_STRIKE.getValue(), strikeCount);
         }
         if (ConstVariable.isGreaterThanZero(ballCount)) {
             return MessageFormat.format(ViewMessage.N_BALL.getValue(), ballCount);
         }
-        return ViewMessage.NOTHING.getValue();
+        if (ConstVariable.isGreaterThanZero(strikeCount)) {
+            return MessageFormat.format(ViewMessage.N_STRIKE.getValue(), strikeCount);
+        }
+        return null;
     }
 }
